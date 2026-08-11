@@ -109,10 +109,32 @@ function partShopUrl(partName, vehicle) {
   return `https://shop.advanceautoparts.com/web/SearchResults?searchTerm=${encodeURIComponent(searchText)}`;
 }
 
+// --- EmailJS configuration (for "Send me details in Email") ---
+// To turn this on:
+// 1. Sign up free at https://www.emailjs.com
+// 2. Add an Email Service (e.g. Gmail) → copy its Service ID below.
+// 3. Create an Email Template with these variables in it: {{to_email}}, {{subject}}, {{message}}
+//    Important: on the template's "Settings" tab, set the "To Email" field to {{to_email}}.
+// 4. Copy your Public Key from Account → General.
+// 5. Paste all three values in place of the YOUR_... placeholders below.
+const EMAILJS_PUBLIC_KEY = 'BOo56JEuNPYGYjPu0';
+const EMAILJS_SERVICE_ID = 'service_d1v984v';
+const EMAILJS_TEMPLATE_ID = 'template_xgcujjo';
+const emailjsConfigured = ![EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID].some(v => v.startsWith('YOUR_'));
+
+if (typeof emailjs !== 'undefined' && emailjsConfigured) {
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+}
+
 const codeInput = document.getElementById('code');
 const suggestionsBox = document.getElementById('suggestions');
 const form = document.getElementById('lookup-form');
 const resultBox = document.getElementById('result');
+
+// Remembers the most recently displayed lookup result, so the email
+// button can send exactly what's on screen.
+let currentEntry = null;
+let currentVehicle = null;
 
 codeInput.addEventListener('input', () => {
   const val = codeInput.value.trim().toUpperCase();
@@ -153,12 +175,17 @@ form.addEventListener('submit', (e) => {
   resultBox.classList.remove('hidden');
 
   if (!entry) {
+    currentEntry = null;
+    currentVehicle = null;
     resultBox.innerHTML = `
       <p class="not-found">No match found for code "<strong>${escapeHtml(codeRaw)}</strong>".
       Double-check the code (format like P0301) or try another.</p>
     `;
     return;
   }
+
+  currentEntry = entry;
+  currentVehicle = { make, model, year };
 
   const vehicleLine = [year, make, model].filter(Boolean).join(' ');
 
@@ -194,6 +221,115 @@ resultBox.addEventListener('click', (e) => {
     findNearbyHelp(e.target);
   }
 });
+
+// --- Send me details in Email (button sits next to Look Up. Uses EmailJS
+// to send whatever code was most recently looked up straight to the
+// address the customer types in — nothing is sent until they click Send.) ---
+
+const emailLink = document.getElementById('email-link');
+const emailFormEl = document.getElementById('email-form');
+const emailInput = document.getElementById('email-input');
+const emailSendBtn = document.getElementById('email-send-btn');
+const emailStatusEl = document.getElementById('email-status');
+
+emailLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  emailFormEl.classList.toggle('hidden');
+  emailStatusEl.textContent = '';
+  emailStatusEl.className = 'email-status';
+  if (!emailFormEl.classList.contains('hidden')) {
+    if (!currentEntry) {
+      emailStatusEl.textContent = 'Look up a code first, then click here to email yourself the results.';
+      emailStatusEl.className = 'email-status email-error';
+    } else {
+      emailInput.focus();
+    }
+  }
+});
+
+emailSendBtn.addEventListener('click', () => {
+  sendDetailsEmail(emailInput.value.trim(), emailStatusEl, emailSendBtn);
+});
+
+emailInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    emailSendBtn.click();
+  }
+});
+
+function buildEmailMessage(entry, vehicle) {
+  const vehicleLine = [vehicle.year, vehicle.make, vehicle.model].filter(Boolean).join(' ');
+  const lines = [];
+  lines.push(`${entry.code} — ${entry.title}`);
+  lines.push(entry.system + (vehicleLine ? ' · ' + vehicleLine : ''));
+  lines.push('');
+  lines.push('LIKELY CAUSES');
+  entry.causes.forEach(c => lines.push('- ' + c));
+  lines.push('');
+  lines.push('RECOMMENDED SERVICE');
+  entry.service.forEach(s => lines.push('- ' + s));
+  lines.push('');
+  lines.push('PARTS COMMONLY NEEDED');
+  entry.parts.forEach(p => lines.push(`- ${p}: ${partShopUrl(p, vehicle)}`));
+  lines.push('');
+  lines.push('WHO CAN FIX THIS NEAR YOU');
+  lines.push('An Advance Auto Parts associate can often pull the same code for free and point you to the right part (they cannot perform repairs).');
+  lines.push('Find an Advance Auto Parts store: https://stores.advanceautoparts.com/');
+  lines.push('Find nearby repair shops on Google Maps: https://www.google.com/maps/search/auto+repair+shop+near+me');
+  lines.push('');
+  lines.push('This tool provides general, code-based guidance only — it is not a substitute for a professional diagnosis. Sent from CheckEngine.');
+  return lines.join('\n');
+}
+
+function sendDetailsEmail(email, statusEl, sendBtn) {
+  if (!statusEl || !sendBtn) return;
+
+  if (typeof emailjs === 'undefined' || !emailjsConfigured) {
+    statusEl.textContent = 'Email sending isn’t set up yet on this site. (Site owner: add your EmailJS keys near the top of script.js.)';
+    statusEl.className = 'email-status email-error';
+    return;
+  }
+
+  if (!currentEntry) {
+    statusEl.textContent = 'Look up a code first, then come back to email the results.';
+    statusEl.className = 'email-status email-error';
+    return;
+  }
+
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRe.test(email)) {
+    statusEl.textContent = 'Please enter a valid email address.';
+    statusEl.className = 'email-status email-error';
+    return;
+  }
+
+  sendBtn.disabled = true;
+  sendBtn.textContent = 'Sending…';
+  statusEl.textContent = '';
+  statusEl.className = 'email-status';
+
+  const message = buildEmailMessage(currentEntry, currentVehicle || {});
+
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    to_email: email,
+    subject: `Your CheckEngine results — ${currentEntry.code}`,
+    code: currentEntry.code,
+    title: currentEntry.title,
+    message,
+  }).then(() => {
+    statusEl.textContent = `Sent! Check ${email} for the details.`;
+    statusEl.className = 'email-status email-success';
+    sendBtn.textContent = 'Send';
+    sendBtn.disabled = false;
+  }).catch((err) => {
+    console.error('EmailJS error:', err);
+    statusEl.textContent = 'Something went wrong sending the email. Please try again.';
+    statusEl.className = 'email-status email-error';
+    sendBtn.textContent = 'Send';
+    sendBtn.disabled = false;
+  });
+}
 
 function findNearbyHelp(button) {
   const out = document.getElementById('nearby-results');

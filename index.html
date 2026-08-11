@@ -35,7 +35,16 @@
       <input type="text" id="code" placeholder="e.g. P0301" required autocomplete="off">
       <div id="suggestions" class="suggestions"></div>
     </div>
-    <button type="submit">Look Up</button>
+    <div class="button-row">
+      <button type="submit">Look Up</button>
+      <a href="#" id="email-link" class="email-link-btn">✉️ Send me details in Email</a>
+    </div>
+
+    <div id="email-form" class="email-form hidden">
+      <input type="email" id="email-input" placeholder="you@example.com" autocomplete="email">
+      <button type="button" id="email-send-btn">Send</button>
+      <div id="email-status" class="email-status"></div>
+    </div>
   </form>
 
   <section id="result" class="card result hidden"></section>
@@ -54,6 +63,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

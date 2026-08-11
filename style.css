@@ -64,6 +64,28 @@ button[type="submit"] {
 }
 button[type="submit"]:hover { background: var(--blue-dark); }
 
+.button-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.email-link-btn {
+  display: inline-block;
+  background: white;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+.email-link-btn:hover { background: #eff4ff; }
+
 .suggestions {
   position: absolute;
   top: 100%;
@@ -162,6 +184,33 @@ button[type="submit"]:hover { background: var(--blue-dark); }
 .mechanic-list a { color: var(--blue); font-weight: 600; text-decoration: none; margin-right: 8px; }
 .mechanic-list a:hover { text-decoration: underline; }
 .mechanic-dist { color: var(--muted); font-size: 12px; }
+
+.email-form { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.email-form.hidden { display: none; }
+.email-form input[type="email"] {
+  flex: 1;
+  min-width: 180px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+}
+.email-form input[type="email"]:focus { outline: none; border-color: var(--blue); }
+.email-form button {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.email-form button:hover { background: var(--blue-dark); }
+.email-form button:disabled { opacity: 0.6; cursor: default; }
+.email-status { width: 100%; font-size: 13px; margin-top: 4px; }
+.email-status.email-success { color: #15803d; }
+.email-status.email-error { color: #b91c1c; }
 
 .disclaimer {
   font-size: 13px;

@@ -143,8 +143,8 @@ button[type="submit"]:hover { background: var(--amber-strong); }
 }
 .severity-label { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
 .severity-note { font-size: 13px; margin: 0; color: var(--muted); line-height: 1.5; }
-.sev-stop { background: var(--stop-bg); border-color: var(--stop-border); }
-.sev-stop .severity-label { color: var(--danger); }
+.sev-stop { background: var(--stop-bg); border-color: var(--stop-border); border-width: 2px; }
+.sev-stop .severity-label { color: var(--danger); font-size: 15px; letter-spacing: 0.2px; }
 .sev-caution { background: var(--warn-bg); border-color: var(--warn-border); }
 .sev-caution .severity-label { color: var(--amber); }
 .sev-safe { background: var(--safe-bg); border-color: var(--safe-border); }

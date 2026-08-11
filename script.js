@@ -698,7 +698,7 @@ function escapeHtml(str) {
 // back to the plain causes list with no severity badge, same as before. ---
 
 const SEVERITY_LABELS = {
-  stop: 'Stop driving now',
+  stop: 'STOP DRIVING NOW — Get fixed before driving',
   caution: 'OK for short trips — get it checked soon',
   safe: 'Safe to keep driving',
 };

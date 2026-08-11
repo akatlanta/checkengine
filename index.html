@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CheckEngine — Diagnose Your Check Engine Light</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <h1>🔧 CheckEngine</h1>
+    <p class="tagline">Enter your vehicle and check engine code to see likely causes, recommended service, and parts.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <form id="lookup-form" class="card">
+    <div class="field-row">
+      <div class="field">
+        <label for="make">Make</label>
+        <input type="text" id="make" placeholder="e.g. Honda" required>
+      </div>
+      <div class="field">
+        <label for="model">Model</label>
+        <input type="text" id="model" placeholder="e.g. Civic" required>
+      </div>
+      <div class="field">
+        <label for="year">Year</label>
+        <input type="text" id="year" placeholder="e.g. 2015">
+      </div>
+    </div>
+    <div class="field">
+      <label for="code">Check Engine Code (DTC)</label>
+      <input type="text" id="code" placeholder="e.g. P0301" required autocomplete="off">
+      <div id="suggestions" class="suggestions"></div>
+    </div>
+    <button type="submit">Look Up</button>
+  </form>
+
+  <section id="result" class="card result hidden"></section>
+
+  <p class="disclaimer">
+    This tool provides general, code-based guidance only — it is not a substitute for a professional diagnosis.
+    Actual causes and required parts vary by vehicle, mileage, and history. Always confirm with a qualified mechanic before repairs.
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    CheckEngine — informational tool, not a repair guarantee. Not affiliated with or endorsed by Advance Auto Parts.
+    <br>
+    <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

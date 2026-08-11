@@ -14,6 +14,10 @@
   --warn-border: #6B4A17;
   --danger: #F3897C;
   --success: #8ED9A0;
+  --stop-bg: #3A1613;
+  --stop-border: #7A2E26;
+  --safe-bg: #16231A;
+  --safe-border: #2E5A3E;
 }
 
 * { box-sizing: border-box; }
@@ -130,6 +134,41 @@ button[type="submit"]:hover { background: var(--amber-strong); }
 .result ul { margin: 0; padding-left: 20px; }
 .result li { margin-bottom: 4px; font-size: 14.5px; }
 .result .not-found { color: var(--danger); }
+
+.severity-badge {
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 14px 0 4px;
+  border: 1px solid;
+}
+.severity-label { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+.severity-note { font-size: 13px; margin: 0; color: var(--muted); line-height: 1.5; }
+.sev-stop { background: var(--stop-bg); border-color: var(--stop-border); }
+.sev-stop .severity-label { color: var(--danger); }
+.sev-caution { background: var(--warn-bg); border-color: var(--warn-border); }
+.sev-caution .severity-label { color: var(--amber); }
+.sev-safe { background: var(--safe-bg); border-color: var(--safe-border); }
+.sev-safe .severity-label { color: var(--success); }
+
+.causes-ranked { margin: 0; padding-left: 0; list-style: none; }
+.causes-ranked li { margin-bottom: 7px; font-size: 14.5px; }
+.likelihood-tag {
+  display: inline-block;
+  background: var(--field-bg);
+  border: 1px solid var(--border);
+  color: var(--amber);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  margin-right: 8px;
+  min-width: 42px;
+  text-align: center;
+}
+.likelihood-disclaimer { font-size: 11.5px; color: var(--muted); margin: 6px 0 0; font-style: italic; }
+
+.diy-tests { margin: 0; padding-left: 20px; }
+.diy-tests li { margin-bottom: 8px; font-size: 14.5px; line-height: 1.5; }
 
 .parts-list a {
   color: var(--amber);

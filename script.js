@@ -243,14 +243,19 @@ function partShopUrl(partName, vehicle) {
 const VEHICLE_DATA = {
   "Acura": ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TL", "TLX", "TSX", "ZDX"],
   "Alfa Romeo": ["4C", "Giulia", "Giulietta", "Stelvio"],
+  "Aston Martin": ["DB11", "DBS", "DBX", "Rapide", "Vantage"],
   "Audi": ["A3", "A4", "A5", "A6", "A7", "A8", "e-tron", "Q3", "Q5", "Q7", "Q8", "R8", "TT"],
+  "Bentley": ["Bentayga", "Continental GT", "Flying Spur", "Mulsanne"],
   "BMW": ["2 Series", "3 Series", "4 Series", "5 Series", "7 Series", "i3", "i4", "iX", "X1", "X3", "X5", "X7", "Z4"],
   "Buick": ["Enclave", "Encore", "Envision", "LaCrosse", "Lucerne", "Regal", "Rendezvous", "Verano"],
   "Cadillac": ["ATS", "CT4", "CT5", "CT6", "CTS", "DTS", "Escalade", "SRX", "STS", "XT4", "XT5", "XT6", "XTS"],
   "Chevrolet": ["Astro", "Avalanche", "Aveo", "Blazer", "Bolt", "Camaro", "Cavalier", "Cobalt", "Colorado", "Corvette", "Cruze", "Equinox", "Express", "HHR", "Impala", "Malibu", "Monte Carlo", "S-10", "Silverado", "Sonic", "Spark", "Suburban", "Tahoe", "Trailblazer", "Traverse", "Trax", "Volt"],
   "Chrysler": ["200", "300", "Aspen", "Concorde", "Crossfire", "Pacifica", "PT Cruiser", "Sebring", "Town & Country", "Voyager"],
+  "Daewoo": ["Lanos", "Leganza", "Nubira"],
   "Dodge": ["Avenger", "Caliber", "Caravan", "Challenger", "Charger", "Dakota", "Durango", "Grand Caravan", "Journey", "Magnum", "Neon", "Nitro", "Stratus", "Viper"],
+  "Ferrari": ["458", "488", "812", "California", "F8", "GTC4Lusso", "Portofino", "Roma", "SF90"],
   "Fiat": ["500", "500L", "500X"],
+  "Fisker": ["Karma", "Ocean"],
   "Ford": ["Bronco", "C-Max", "Edge", "Escape", "Escort", "Expedition", "Explorer", "F-150", "F-250", "F-350", "Fiesta", "Five Hundred", "Flex", "Focus", "Fusion", "Mustang", "Ranger", "Taurus", "Transit", "Windstar"],
   "Genesis": ["G70", "G80", "G90", "GV70", "GV80"],
   "GMC": ["Acadia", "Canyon", "Envoy", "Jimmy", "Savana", "Sierra", "Terrain", "Yukon"],
@@ -258,13 +263,19 @@ const VEHICLE_DATA = {
   "Hummer": ["H1", "H2", "H3"],
   "Hyundai": ["Accent", "Azera", "Elantra", "Ioniq", "Kona", "Palisade", "Santa Fe", "Sonata", "Tucson", "Veloster", "Venue"],
   "Infiniti": ["EX35", "FX35", "G35", "G37", "JX35", "M35", "Q50", "Q60", "QX50", "QX60", "QX80"],
+  "Isuzu": ["Ascender", "Axiom", "Rodeo", "Trooper", "VehiCROSS"],
   "Jaguar": ["F-Pace", "F-Type", "S-Type", "X-Type", "XE", "XF", "XJ", "XK"],
   "Jeep": ["Cherokee", "Commander", "Compass", "Gladiator", "Grand Cherokee", "Liberty", "Patriot", "Renegade", "Wrangler"],
   "Kia": ["Forte", "Optima", "Rio", "Sedona", "Sorento", "Soul", "Sportage", "Stinger", "Telluride"],
+  "Lamborghini": ["Aventador", "Gallardo", "Huracan", "Murcielago", "Urus"],
   "Land Rover": ["Defender", "Discovery", "Discovery Sport", "Range Rover", "Range Rover Evoque", "Range Rover Sport", "Range Rover Velar"],
   "Lexus": ["CT200h", "ES", "GS", "GX", "IS", "LC", "LS", "LX", "NX", "RC", "RX", "UX"],
   "Lincoln": ["Aviator", "Continental", "Corsair", "MKC", "MKS", "MKT", "MKX", "MKZ", "Nautilus", "Navigator", "Town Car"],
+  "Lotus": ["Elise", "Emira", "Evora", "Exige"],
+  "Lucid": ["Air", "Gravity"],
+  "Maserati": ["Ghibli", "GranCabrio", "GranTurismo", "Levante", "Quattroporte"],
   "Mazda": ["3", "5", "6", "CX-3", "CX-30", "CX-5", "CX-9", "MX-5 Miata", "RX-8", "Tribute"],
+  "McLaren": ["570S", "650S", "720S", "Artura", "GT"],
   "Mercedes-Benz": ["A-Class", "C-Class", "CLA", "CLS", "E-Class", "G-Class", "GLA", "GLC", "GLE", "GLS", "S-Class", "SL", "SLK"],
   "Mercury": ["Grand Marquis", "Milan", "Montego", "Mountaineer", "Sable"],
   "Mini": ["Clubman", "Convertible", "Countryman", "Hardtop", "Paceman"],
@@ -272,17 +283,21 @@ const VEHICLE_DATA = {
   "Nissan": ["350Z", "370Z", "Altima", "Armada", "Frontier", "Juke", "Kicks", "Maxima", "Murano", "Pathfinder", "Rogue", "Sentra", "Titan", "Versa", "Xterra"],
   "Oldsmobile": ["Alero", "Aurora", "Bravada", "Intrigue"],
   "Plymouth": ["Breeze", "Neon", "Voyager"],
-  "Pontiac": ["Aztek", "Bonneville", "G6", "G8", "Grand Am", "Grand Prix", "Solstice", "Sunfire", "Torrent", "Vibe"],
   "Polestar": ["Polestar 1", "Polestar 2", "Polestar 3"],
+  "Pontiac": ["Aztek", "Bonneville", "G6", "G8", "Grand Am", "Grand Prix", "Solstice", "Sunfire", "Torrent", "Vibe"],
   "Porsche": ["911", "718 Boxster", "718 Cayman", "Cayenne", "Macan", "Panamera", "Taycan"],
   "Ram": ["1500", "2500", "3500", "ProMaster"],
+  "Rivian": ["R1S", "R1T"],
+  "Rolls-Royce": ["Cullinan", "Dawn", "Ghost", "Phantom", "Wraith"],
   "Saab": ["9-3", "9-5", "9-7X"],
   "Saturn": ["Aura", "Ion", "Outlook", "Sky", "Vue"],
   "Scion": ["FR-S", "iQ", "tC", "xA", "xB", "xD"],
+  "smart": ["Fortwo"],
   "Subaru": ["Ascent", "BRZ", "Crosstrek", "Forester", "Impreza", "Legacy", "Outback", "WRX"],
   "Suzuki": ["Forenza", "Grand Vitara", "SX4", "Verona", "XL7"],
   "Tesla": ["Cybertruck", "Model 3", "Model S", "Model X", "Model Y"],
   "Toyota": ["4Runner", "Avalon", "Camry", "Corolla", "Highlander", "Land Cruiser", "Matrix", "Prius", "RAV4", "Sequoia", "Sienna", "Solara", "Tacoma", "Tundra", "Venza", "Yaris"],
+  "VinFast": ["VF8", "VF9"],
   "Volkswagen": ["Atlas", "Beetle", "CC", "Golf", "GTI", "ID.4", "Jetta", "Passat", "Tiguan", "Touareg"],
   "Volvo": ["C30", "S60", "S80", "S90", "V60", "V90", "XC40", "XC60", "XC90"]
 };
@@ -291,7 +306,7 @@ const makeSelect = document.getElementById('make');
 const modelSelect = document.getElementById('model');
 const yearSelect = document.getElementById('year');
 
-Object.keys(VEHICLE_DATA).sort().forEach(make => {
+Object.keys(VEHICLE_DATA).sort((a, b) => a.localeCompare(b)).forEach(make => {
   const opt = document.createElement('option');
   opt.value = make;
   opt.textContent = make;
@@ -390,10 +405,17 @@ form.addEventListener('submit', (e) => {
   if (!entry) {
     currentEntry = null;
     currentVehicle = null;
-    resultBox.innerHTML = `
-      <p class="not-found">No match found for code "<strong>${escapeHtml(codeRaw)}</strong>".
-      Double-check the code (format like P0301) or try another.</p>
-    `;
+    if (isLikelyManufacturerSpecific(codeRaw)) {
+      resultBox.innerHTML = `
+        <p class="not-found">"<strong>${escapeHtml(codeRaw)}</strong>" looks like a manufacturer-specific code, not a generic/standard one.</p>
+        <p class="not-found-help">Its exact meaning depends on the vehicle maker (and sometimes the model/year), so there's no single free, verified database of these — we won't guess at one. Your best options: your dealer's service department, a paid lookup tool (ALLDATA, Identifix, Mitchell1), or your make's dedicated owner/enthusiast forum.</p>
+      `;
+    } else {
+      resultBox.innerHTML = `
+        <p class="not-found">No match found for code "<strong>${escapeHtml(codeRaw)}</strong>".
+        Double-check the code (format like P0301) or try another.</p>
+      `;
+    }
     return;
   }
 
@@ -685,6 +707,22 @@ function haversineMiles(lat1, lon1, lat2, lon2) {
   const dLon = toRad(lon2 - lon1);
   const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// Rough, honest classification of whether an unmatched code is likely
+// manufacturer-specific rather than just a generic code we haven't added
+// yet. Per the SAE J2012 numbering convention: for P-codes, the digit
+// after the letter is 0/2/3 for SAE-standard (generic) codes and 1 for
+// manufacturer-specific; for B/C/U-codes, 0 is generic and 1+ is
+// manufacturer-specific. P3xxx is a genuinely mixed range (some generic,
+// some not), so it's deliberately left out of this check rather than
+// guessed at either way.
+function isLikelyManufacturerSpecific(code) {
+  const m = code.match(/^([PBCU])([0-9])/);
+  if (!m) return false;
+  const [, letter, digit] = m;
+  if (letter === 'P') return digit === '1';
+  return digit !== '0';
 }
 
 function escapeHtml(str) {

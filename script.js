@@ -211,17 +211,27 @@ function partShopUrl(partName, vehicle) {
   // for matching/searching, but keep the original text as the link label.
   const clean = partName.replace(/\s*\([^)]*\)/g, '').replace(/\s+/g, ' ').trim();
   const cleanLower = clean.toLowerCase();
+  const vehicleBits = vehicle ? [vehicle.year, vehicle.make, vehicle.model].filter(Boolean) : [];
+
+  // If the customer told us their vehicle (make/model, optionally year),
+  // always point them to AAP's search scoped to that vehicle + this part —
+  // never the generic, all-vehicles category page. AAP doesn't expose a
+  // public fitment API, so there's no way to build a guaranteed structured
+  // "only parts that fit a 2015 Honda Civic" link from a URL alone; folding
+  // year/make/model into the search text is the closest thing available,
+  // and it's what AAP's own search results will actually rank against.
+  if (vehicleBits.length) {
+    const searchText = [...vehicleBits, clean].join(' ').trim();
+    return `https://shop.advanceautoparts.com/web/SearchResults?searchTerm=${encodeURIComponent(searchText)}`;
+  }
+
+  // No vehicle info at all (make/model left blank) — fall back to a
+  // general, non-vehicle-specific category page if we have one curated,
+  // otherwise AAP's own keyword search page.
   const match = AAP_CATEGORY_LINKS.find(([key]) => cleanLower.includes(key));
   if (match) return match[1];
 
-  // No dedicated category page for this part — fall back to AAP's own
-  // keyword search. There's no public fitment API to build a true
-  // vehicle-filtered link, so instead we fold year/make/model into the
-  // search text itself, giving their search engine vehicle context even
-  // though it isn't a structured fitment filter.
-  const vehicleBits = vehicle ? [vehicle.year, vehicle.make, vehicle.model].filter(Boolean) : [];
-  const searchText = [...vehicleBits, clean].join(' ').trim();
-  return `https://shop.advanceautoparts.com/web/SearchResults?searchTerm=${encodeURIComponent(searchText)}`;
+  return `https://shop.advanceautoparts.com/web/SearchResults?searchTerm=${encodeURIComponent(clean)}`;
 }
 
 // --- US-market vehicle data for the Make/Model dropdowns. Covers the

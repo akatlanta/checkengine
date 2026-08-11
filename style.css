@@ -43,14 +43,18 @@ main.wrap { padding: 28px 20px 60px; }
 .field-row { display: flex; gap: 12px; flex-wrap: wrap; }
 .field { flex: 1; min-width: 140px; margin-bottom: 16px; position: relative; }
 .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--muted); }
-.field input {
+.field input, .field select {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 15px;
+  background: white;
+  color: var(--text);
+  font-family: inherit;
 }
-.field input:focus { outline: none; border-color: var(--blue); }
+.field input:focus, .field select:focus { outline: none; border-color: var(--blue); }
+.field select:disabled { color: var(--muted); background: var(--bg); cursor: not-allowed; }
 
 button[type="submit"] {
   background: var(--blue);

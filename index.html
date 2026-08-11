@@ -19,15 +19,21 @@
     <div class="field-row">
       <div class="field">
         <label for="make">Make</label>
-        <input type="text" id="make" placeholder="e.g. Honda" required>
+        <select id="make" required>
+          <option value="">Select make…</option>
+        </select>
       </div>
       <div class="field">
         <label for="model">Model</label>
-        <input type="text" id="model" placeholder="e.g. Civic" required>
+        <select id="model" required disabled>
+          <option value="">Select make first…</option>
+        </select>
       </div>
       <div class="field">
         <label for="year">Year</label>
-        <input type="text" id="year" placeholder="e.g. 2015">
+        <select id="year">
+          <option value="">Select year…</option>
+        </select>
       </div>
     </div>
     <div class="field">

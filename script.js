@@ -58,7 +58,122 @@ const DTC_DATA = [
     { "code": "P0720", "title": "Output Speed Sensor Circuit Malfunction", "system": "Transmission", "causes": ["Faulty output speed sensor", "Wiring fault"], "service": ["Test and replace sensor"], "parts": ["Output speed sensor"] },
     { "code": "P0730", "title": "Incorrect Gear Ratio", "system": "Transmission", "causes": ["Worn clutch packs/bands", "Low fluid", "Solenoid failure"], "service": ["Check fluid level/condition", "Diagnose internal transmission wear", "Test shift solenoids"], "parts": ["Transmission fluid", "Shift solenoids", "Transmission filter"] },
     { "code": "P0740", "title": "Torque Converter Clutch Circuit Malfunction", "system": "Transmission", "causes": ["Faulty torque converter clutch solenoid", "Low transmission fluid", "Wiring fault"], "service": ["Test TCC solenoid", "Check fluid level"], "parts": ["Torque converter clutch solenoid", "Transmission fluid"] },
-    { "code": "P0743", "title": "Torque Converter Clutch Circuit Electrical", "system": "Transmission", "causes": ["Wiring short/open in TCC circuit", "Faulty solenoid"], "service": ["Inspect wiring", "Replace solenoid"], "parts": ["Torque converter clutch solenoid"] }
+    { "code": "P0743", "title": "Torque Converter Clutch Circuit Electrical", "system": "Transmission", "causes": ["Wiring short/open in TCC circuit", "Faulty solenoid"], "service": ["Inspect wiring", "Replace solenoid"], "parts": ["Torque converter clutch solenoid"] },
+
+    // --- Expanded generic (SAE J2012) codes below. These are standardized
+    // OBD-II codes that read the same way on every US OBD-II vehicle
+    // (1996+), regardless of make. Manufacturer-specific codes (P1xxx and
+    // beyond) are not included since their meaning varies by brand. ---
+
+    { "code": "P0104", "title": "Mass Air Flow (MAF) Circuit Intermittent", "system": "Fuel/Air Metering", "causes": ["Loose or corroded MAF connector", "Damaged wiring harness", "Intermittent internal sensor fault"], "service": ["Inspect and clean MAF connector", "Check wiring for chafing/looseness", "Replace MAF sensor if intermittent fault persists"], "parts": ["MAF sensor", "Wiring harness connector"] },
+    { "code": "P0105", "title": "Manifold Absolute Pressure (MAP)/Barometric Pressure Circuit Malfunction", "system": "Fuel/Air Metering", "causes": ["Faulty MAP sensor", "Vacuum leak/disconnected MAP hose", "Damaged wiring/connector"], "service": ["Inspect MAP vacuum hose for leaks/cracks", "Test MAP sensor output", "Replace sensor if faulty"], "parts": ["MAP sensor", "Vacuum hose"] },
+    { "code": "P0106", "title": "MAP/Barometric Pressure Circuit Range/Performance Problem", "system": "Fuel/Air Metering", "causes": ["Vacuum leak", "Contaminated or failing MAP sensor", "Clogged MAP sensor port"], "service": ["Inspect for vacuum leaks", "Clean/replace MAP sensor"], "parts": ["MAP sensor", "Vacuum hose"] },
+    { "code": "P0107", "title": "MAP Circuit Low Input", "system": "Fuel/Air Metering", "causes": ["Short to ground in MAP wiring", "Faulty MAP sensor", "Disconnected vacuum hose"], "service": ["Inspect wiring for shorts", "Check vacuum hose connection", "Replace MAP sensor if needed"], "parts": ["MAP sensor"] },
+    { "code": "P0108", "title": "MAP Circuit High Input", "system": "Fuel/Air Metering", "causes": ["Short to voltage in MAP circuit", "Faulty MAP sensor", "Pinched/blocked vacuum hose"], "service": ["Inspect wiring for shorts", "Replace MAP sensor if faulty"], "parts": ["MAP sensor"] },
+    { "code": "P0109", "title": "MAP/Barometric Pressure Circuit Intermittent", "system": "Fuel/Air Metering", "causes": ["Loose or corroded connector", "Intermittent wiring fault", "Failing MAP sensor"], "service": ["Inspect and clean connector", "Check wiring harness", "Replace sensor if fault persists"], "parts": ["MAP sensor", "Wiring harness connector"] },
+    { "code": "P0111", "title": "Intake Air Temperature (IAT) Circuit Range/Performance Problem", "system": "Fuel/Air Metering", "causes": ["Faulty IAT sensor", "Sensor reading affected by engine heat soak", "Wiring issue"], "service": ["Test IAT sensor resistance vs. temperature", "Replace sensor if out of spec"], "parts": ["IAT sensor"] },
+    { "code": "P0112", "title": "IAT Circuit Low Input", "system": "Fuel/Air Metering", "causes": ["Short to ground in IAT wiring", "Faulty IAT sensor"], "service": ["Inspect wiring for shorts", "Replace IAT sensor"], "parts": ["IAT sensor"] },
+    { "code": "P0114", "title": "IAT Circuit Intermittent", "system": "Fuel/Air Metering", "causes": ["Loose/corroded connector", "Intermittent wiring fault", "Failing sensor"], "service": ["Inspect and clean connector", "Replace sensor if fault persists"], "parts": ["IAT sensor"] },
+    { "code": "P0115", "title": "Engine Coolant Temperature (ECT) Circuit Malfunction", "system": "Fuel/Air Metering", "causes": ["Faulty ECT sensor", "Damaged wiring/connector", "Low coolant level"], "service": ["Check coolant level", "Test ECT sensor", "Repair wiring or replace sensor"], "parts": ["Coolant temperature sensor", "Coolant"] },
+    { "code": "P0119", "title": "ECT Circuit Intermittent", "system": "Fuel/Air Metering", "causes": ["Loose/corroded connector", "Intermittent wiring fault", "Failing ECT sensor"], "service": ["Inspect and clean connector", "Replace sensor if fault persists"], "parts": ["Coolant temperature sensor"] },
+    { "code": "P0122", "title": "Throttle Position Sensor (TPS) Circuit Low Input", "system": "Fuel/Air Metering", "causes": ["Short to ground in TPS wiring", "Faulty TPS", "Worn throttle body"], "service": ["Inspect wiring for shorts", "Test/replace TPS"], "parts": ["Throttle position sensor"] },
+    { "code": "P0123", "title": "TPS Circuit High Input", "system": "Fuel/Air Metering", "causes": ["Short to voltage in TPS circuit", "Faulty TPS"], "service": ["Inspect wiring for shorts", "Replace TPS if faulty"], "parts": ["Throttle position sensor"] },
+    { "code": "P0124", "title": "TPS Circuit Intermittent", "system": "Fuel/Air Metering", "causes": ["Loose/corroded connector", "Worn throttle body contacts", "Intermittent wiring fault"], "service": ["Inspect and clean connector/throttle body", "Replace TPS if fault persists"], "parts": ["Throttle position sensor", "Throttle body"] },
+    { "code": "P0131", "title": "O2 Sensor Circuit Low Voltage (Bank 1 Sensor 1)", "system": "Oxygen Sensor", "causes": ["Failed upstream O2 sensor", "Exhaust leak near sensor", "Wiring short to ground"], "service": ["Inspect exhaust for leaks", "Test and replace O2 sensor"], "parts": ["Upstream (Bank 1, Sensor 1) oxygen sensor"] },
+    { "code": "P0132", "title": "O2 Sensor Circuit High Voltage (Bank 1 Sensor 1)", "system": "Oxygen Sensor", "causes": ["Failed upstream O2 sensor", "Wiring short to voltage", "Contaminated sensor"], "service": ["Test O2 sensor output", "Replace O2 sensor", "Inspect wiring for shorts"], "parts": ["Upstream (Bank 1, Sensor 1) oxygen sensor"] },
+    { "code": "P0137", "title": "O2 Sensor Circuit Low Voltage (Bank 1 Sensor 2)", "system": "Oxygen Sensor", "causes": ["Failed downstream O2 sensor", "Exhaust/catalyst issue", "Wiring short to ground"], "service": ["Inspect exhaust system", "Test and replace O2 sensor"], "parts": ["Downstream (Bank 1, Sensor 2) oxygen sensor"] },
+    { "code": "P0138", "title": "O2 Sensor Circuit High Voltage (Bank 1 Sensor 2)", "system": "Oxygen Sensor", "causes": ["Failed downstream O2 sensor", "Wiring short to voltage"], "service": ["Test O2 sensor output", "Replace O2 sensor if faulty"], "parts": ["Downstream (Bank 1, Sensor 2) oxygen sensor"] },
+    { "code": "P0139", "title": "O2 Sensor Circuit Slow Response (Bank 1 Sensor 2)", "system": "Oxygen Sensor", "causes": ["Aged/contaminated downstream O2 sensor", "Exhaust leak"], "service": ["Replace O2 sensor", "Inspect exhaust for leaks"], "parts": ["Downstream (Bank 1, Sensor 2) oxygen sensor"] },
+    { "code": "P0140", "title": "O2 Sensor Circuit No Activity Detected (Bank 1 Sensor 2)", "system": "Oxygen Sensor", "causes": ["Failed downstream O2 sensor", "Open circuit in wiring"], "service": ["Test and replace O2 sensor", "Repair wiring"], "parts": ["Downstream (Bank 1, Sensor 2) oxygen sensor"] },
+    { "code": "P0150", "title": "O2 Sensor Circuit Malfunction (Bank 2 Sensor 1)", "system": "Oxygen Sensor", "causes": ["Failed upstream O2 sensor (bank 2)", "Wiring/connector damage", "Exhaust leak near sensor"], "service": ["Test O2 sensor response", "Replace O2 sensor", "Repair exhaust leak"], "parts": ["Upstream (Bank 2, Sensor 1) oxygen sensor"] },
+    { "code": "P0151", "title": "O2 Sensor Circuit Low Voltage (Bank 2 Sensor 1)", "system": "Oxygen Sensor", "causes": ["Failed upstream O2 sensor (bank 2)", "Exhaust leak", "Wiring short to ground"], "service": ["Inspect for exhaust leaks", "Test and replace O2 sensor"], "parts": ["Upstream (Bank 2, Sensor 1) oxygen sensor"] },
+    { "code": "P0152", "title": "O2 Sensor Circuit High Voltage (Bank 2 Sensor 1)", "system": "Oxygen Sensor", "causes": ["Failed upstream O2 sensor (bank 2)", "Wiring short to voltage"], "service": ["Test O2 sensor output", "Replace O2 sensor"], "parts": ["Upstream (Bank 2, Sensor 1) oxygen sensor"] },
+    { "code": "P0153", "title": "O2 Sensor Circuit Slow Response (Bank 2 Sensor 1)", "system": "Oxygen Sensor", "causes": ["Aged/contaminated O2 sensor", "Exhaust leak", "Fuel system issue"], "service": ["Replace O2 sensor", "Inspect exhaust for leaks"], "parts": ["Upstream (Bank 2, Sensor 1) oxygen sensor"] },
+    { "code": "P0154", "title": "O2 Sensor Circuit No Activity Detected (Bank 2 Sensor 1)", "system": "Oxygen Sensor", "causes": ["Failed O2 sensor (bank 2)", "Open circuit in sensor wiring", "Exhaust leak"], "service": ["Test and replace O2 sensor", "Repair wiring"], "parts": ["Upstream (Bank 2, Sensor 1) oxygen sensor"] },
+    { "code": "P0155", "title": "O2 Sensor Heater Circuit Malfunction (Bank 2 Sensor 1)", "system": "Oxygen Sensor", "causes": ["Failed sensor heater element", "Blown fuse", "Wiring issue"], "service": ["Test heater circuit resistance", "Replace O2 sensor"], "parts": ["Upstream (Bank 2, Sensor 1) oxygen sensor", "Fuse"] },
+    { "code": "P0156", "title": "O2 Sensor Circuit Malfunction (Bank 2 Sensor 2)", "system": "Oxygen Sensor", "causes": ["Failed downstream O2 sensor (bank 2)", "Wiring damage", "Exhaust/catalyst issue"], "service": ["Test and replace O2 sensor"], "parts": ["Downstream (Bank 2, Sensor 2) oxygen sensor"] },
+    { "code": "P0157", "title": "O2 Sensor Circuit Low Voltage (Bank 2 Sensor 2)", "system": "Oxygen Sensor", "causes": ["Failed downstream O2 sensor (bank 2)", "Exhaust leak", "Wiring short to ground"], "service": ["Inspect exhaust system", "Test and replace O2 sensor"], "parts": ["Downstream (Bank 2, Sensor 2) oxygen sensor"] },
+    { "code": "P0158", "title": "O2 Sensor Circuit High Voltage (Bank 2 Sensor 2)", "system": "Oxygen Sensor", "causes": ["Failed downstream O2 sensor (bank 2)", "Wiring short to voltage"], "service": ["Test O2 sensor output", "Replace O2 sensor if faulty"], "parts": ["Downstream (Bank 2, Sensor 2) oxygen sensor"] },
+    { "code": "P0159", "title": "O2 Sensor Circuit Slow Response (Bank 2 Sensor 2)", "system": "Oxygen Sensor", "causes": ["Aged/contaminated downstream O2 sensor", "Exhaust leak"], "service": ["Replace O2 sensor", "Inspect exhaust for leaks"], "parts": ["Downstream (Bank 2, Sensor 2) oxygen sensor"] },
+    { "code": "P0160", "title": "O2 Sensor Circuit No Activity Detected (Bank 2 Sensor 2)", "system": "Oxygen Sensor", "causes": ["Failed downstream O2 sensor (bank 2)", "Open circuit in wiring"], "service": ["Test and replace O2 sensor", "Repair wiring"], "parts": ["Downstream (Bank 2, Sensor 2) oxygen sensor"] },
+    { "code": "P0161", "title": "O2 Sensor Heater Circuit Malfunction (Bank 2 Sensor 2)", "system": "Oxygen Sensor", "causes": ["Failed heater element", "Wiring/fuse issue"], "service": ["Test heater circuit", "Replace O2 sensor"], "parts": ["Downstream (Bank 2, Sensor 2) oxygen sensor"] },
+    { "code": "P0181", "title": "Fuel Temperature Sensor A Circuit Malfunction", "system": "Fuel System", "causes": ["Faulty fuel temperature sensor", "Damaged wiring/connector"], "service": ["Test fuel temperature sensor", "Repair wiring or replace sensor"], "parts": ["Fuel temperature sensor"] },
+    { "code": "P0182", "title": "Fuel Temperature Sensor A Circuit Low Input", "system": "Fuel System", "causes": ["Short to ground in sensor wiring", "Faulty fuel temperature sensor"], "service": ["Inspect wiring for shorts", "Replace sensor"], "parts": ["Fuel temperature sensor"] },
+    { "code": "P0183", "title": "Fuel Temperature Sensor A Circuit High Input", "system": "Fuel System", "causes": ["Short to voltage in sensor wiring", "Faulty fuel temperature sensor"], "service": ["Inspect wiring for shorts", "Replace sensor if faulty"], "parts": ["Fuel temperature sensor"] },
+    { "code": "P0190", "title": "Fuel Rail Pressure Sensor Circuit Malfunction", "system": "Fuel System", "causes": ["Faulty fuel rail pressure sensor", "Damaged wiring/connector", "Fuel pump/regulator issue"], "service": ["Test fuel rail pressure sensor", "Check fuel pressure", "Replace sensor if faulty"], "parts": ["Fuel rail pressure sensor"] },
+    { "code": "P0191", "title": "Fuel Rail Pressure Sensor Circuit Range/Performance", "system": "Fuel System", "causes": ["Contaminated/failing pressure sensor", "Fuel pressure regulator issue"], "service": ["Test fuel pressure against spec", "Replace sensor or regulator as needed"], "parts": ["Fuel rail pressure sensor", "Fuel pressure regulator"] },
+    { "code": "P0192", "title": "Fuel Rail Pressure Sensor Circuit Low Input", "system": "Fuel System", "causes": ["Short to ground in sensor wiring", "Faulty pressure sensor"], "service": ["Inspect wiring for shorts", "Replace sensor"], "parts": ["Fuel rail pressure sensor"] },
+    { "code": "P0193", "title": "Fuel Rail Pressure Sensor Circuit High Input", "system": "Fuel System", "causes": ["Short to voltage in sensor wiring", "Faulty pressure sensor"], "service": ["Inspect wiring for shorts", "Replace sensor if faulty"], "parts": ["Fuel rail pressure sensor"] },
+    { "code": "P0201", "title": "Injector Circuit Malfunction — Cylinder 1", "system": "Fuel System", "causes": ["Faulty injector (cyl 1)", "Damaged wiring/connector", "Failed injector driver in ECM"], "service": ["Test injector resistance/response", "Repair wiring", "Replace injector if faulty"], "parts": ["Fuel injector (cyl 1)"] },
+    { "code": "P0202", "title": "Injector Circuit Malfunction — Cylinder 2", "system": "Fuel System", "causes": ["Faulty injector (cyl 2)", "Damaged wiring/connector", "Failed injector driver in ECM"], "service": ["Test injector resistance/response", "Repair wiring", "Replace injector if faulty"], "parts": ["Fuel injector (cyl 2)"] },
+    { "code": "P0203", "title": "Injector Circuit Malfunction — Cylinder 3", "system": "Fuel System", "causes": ["Faulty injector (cyl 3)", "Damaged wiring/connector", "Failed injector driver in ECM"], "service": ["Test injector resistance/response", "Repair wiring", "Replace injector if faulty"], "parts": ["Fuel injector (cyl 3)"] },
+    { "code": "P0204", "title": "Injector Circuit Malfunction — Cylinder 4", "system": "Fuel System", "causes": ["Faulty injector (cyl 4)", "Damaged wiring/connector", "Failed injector driver in ECM"], "service": ["Test injector resistance/response", "Repair wiring", "Replace injector if faulty"], "parts": ["Fuel injector (cyl 4)"] },
+    { "code": "P0205", "title": "Injector Circuit Malfunction — Cylinder 5", "system": "Fuel System", "causes": ["Faulty injector (cyl 5)", "Damaged wiring/connector", "Failed injector driver in ECM"], "service": ["Test injector resistance/response", "Repair wiring", "Replace injector if faulty"], "parts": ["Fuel injector (cyl 5)"] },
+    { "code": "P0206", "title": "Injector Circuit Malfunction — Cylinder 6", "system": "Fuel System", "causes": ["Faulty injector (cyl 6)", "Damaged wiring/connector", "Failed injector driver in ECM"], "service": ["Test injector resistance/response", "Repair wiring", "Replace injector if faulty"], "parts": ["Fuel injector (cyl 6)"] },
+    { "code": "P0351", "title": "Ignition Coil A Primary/Secondary Circuit Malfunction", "system": "Ignition/Misfire", "causes": ["Failing ignition coil A", "Damaged coil wiring/connector", "Worn spark plug on that cylinder"], "service": ["Swap coil to isolate fault", "Test coil primary/secondary resistance", "Replace coil and/or spark plug"], "parts": ["Ignition coil", "Spark plug"] },
+    { "code": "P0352", "title": "Ignition Coil B Primary/Secondary Circuit Malfunction", "system": "Ignition/Misfire", "causes": ["Failing ignition coil B", "Damaged coil wiring/connector", "Worn spark plug on that cylinder"], "service": ["Swap coil to isolate fault", "Test coil resistance", "Replace coil and/or spark plug"], "parts": ["Ignition coil", "Spark plug"] },
+    { "code": "P0353", "title": "Ignition Coil C Primary/Secondary Circuit Malfunction", "system": "Ignition/Misfire", "causes": ["Failing ignition coil C", "Damaged coil wiring/connector", "Worn spark plug on that cylinder"], "service": ["Swap coil to isolate fault", "Test coil resistance", "Replace coil and/or spark plug"], "parts": ["Ignition coil", "Spark plug"] },
+    { "code": "P0354", "title": "Ignition Coil D Primary/Secondary Circuit Malfunction", "system": "Ignition/Misfire", "causes": ["Failing ignition coil D", "Damaged coil wiring/connector", "Worn spark plug on that cylinder"], "service": ["Swap coil to isolate fault", "Test coil resistance", "Replace coil and/or spark plug"], "parts": ["Ignition coil", "Spark plug"] },
+    { "code": "P0355", "title": "Ignition Coil E Primary/Secondary Circuit Malfunction", "system": "Ignition/Misfire", "causes": ["Failing ignition coil E", "Damaged coil wiring/connector", "Worn spark plug on that cylinder"], "service": ["Swap coil to isolate fault", "Test coil resistance", "Replace coil and/or spark plug"], "parts": ["Ignition coil", "Spark plug"] },
+    { "code": "P0356", "title": "Ignition Coil F Primary/Secondary Circuit Malfunction", "system": "Ignition/Misfire", "causes": ["Failing ignition coil F", "Damaged coil wiring/connector", "Worn spark plug on that cylinder"], "service": ["Swap coil to isolate fault", "Test coil resistance", "Replace coil and/or spark plug"], "parts": ["Ignition coil", "Spark plug"] },
+    { "code": "P0326", "title": "Knock Sensor 1 Circuit Range/Performance (Bank 1 or Single Sensor)", "system": "Ignition Control", "causes": ["Faulty knock sensor", "Loose sensor mounting", "Engine mechanical noise interference"], "service": ["Test knock sensor signal", "Torque sensor mounting", "Replace sensor if faulty"], "parts": ["Knock sensor"] },
+    { "code": "P0327", "title": "Knock Sensor 1 Circuit Low Input (Bank 1 or Single Sensor)", "system": "Ignition Control", "causes": ["Short to ground in wiring", "Faulty knock sensor"], "service": ["Inspect wiring for shorts", "Replace knock sensor"], "parts": ["Knock sensor"] },
+    { "code": "P0328", "title": "Knock Sensor 1 Circuit High Input (Bank 1 or Single Sensor)", "system": "Ignition Control", "causes": ["Short to voltage in wiring", "Faulty knock sensor"], "service": ["Inspect wiring for shorts", "Replace knock sensor if faulty"], "parts": ["Knock sensor"] },
+    { "code": "P0330", "title": "Knock Sensor 2 Circuit Malfunction (Bank 2)", "system": "Ignition Control", "causes": ["Faulty knock sensor (bank 2)", "Damaged wiring", "Loose sensor mounting"], "service": ["Test knock sensor", "Inspect/repair wiring", "Torque sensor mounting"], "parts": ["Knock sensor"] },
+    { "code": "P0331", "title": "Knock Sensor 2 Circuit Range/Performance (Bank 2)", "system": "Ignition Control", "causes": ["Faulty knock sensor (bank 2)", "Loose mounting", "Engine noise interference"], "service": ["Test knock sensor signal", "Torque sensor mounting"], "parts": ["Knock sensor"] },
+    { "code": "P0332", "title": "Knock Sensor 2 Circuit Low Input (Bank 2)", "system": "Ignition Control", "causes": ["Short to ground in wiring", "Faulty knock sensor"], "service": ["Inspect wiring for shorts", "Replace knock sensor"], "parts": ["Knock sensor"] },
+    { "code": "P0333", "title": "Knock Sensor 2 Circuit High Input (Bank 2)", "system": "Ignition Control", "causes": ["Short to voltage in wiring", "Faulty knock sensor"], "service": ["Inspect wiring for shorts", "Replace knock sensor if faulty"], "parts": ["Knock sensor"] },
+    { "code": "P0336", "title": "Crankshaft Position Sensor Circuit Range/Performance", "system": "Ignition Control", "causes": ["Faulty crankshaft position sensor", "Damaged reluctor/tone ring", "Wiring fault"], "service": ["Test sensor signal", "Inspect reluctor ring", "Replace sensor"], "parts": ["Crankshaft position sensor"] },
+    { "code": "P0337", "title": "Crankshaft Position Sensor Circuit Low Input", "system": "Ignition Control", "causes": ["Short to ground in wiring", "Faulty sensor"], "service": ["Inspect wiring for shorts", "Replace sensor"], "parts": ["Crankshaft position sensor"] },
+    { "code": "P0338", "title": "Crankshaft Position Sensor Circuit High Input", "system": "Ignition Control", "causes": ["Short to voltage in wiring", "Faulty sensor"], "service": ["Inspect wiring for shorts", "Replace sensor if faulty"], "parts": ["Crankshaft position sensor"] },
+    { "code": "P0342", "title": "Camshaft Position Sensor Circuit Low Input", "system": "Ignition Control", "causes": ["Short to ground in wiring", "Faulty camshaft position sensor"], "service": ["Inspect wiring for shorts", "Replace sensor"], "parts": ["Camshaft position sensor"] },
+    { "code": "P0343", "title": "Camshaft Position Sensor Circuit High Input", "system": "Ignition Control", "causes": ["Short to voltage in wiring", "Faulty camshaft position sensor"], "service": ["Inspect wiring for shorts", "Replace sensor if faulty"], "parts": ["Camshaft position sensor"] },
+    { "code": "P0400", "title": "Exhaust Gas Recirculation (EGR) Flow Malfunction", "system": "Emissions (EGR)", "causes": ["Stuck or clogged EGR valve", "Faulty EGR position sensor", "Carbon buildup in EGR passages"], "service": ["Clean/replace EGR valve", "Test EGR position sensor", "Clean EGR passages"], "parts": ["EGR valve", "EGR gasket"] },
+    { "code": "P0403", "title": "EGR Circuit Malfunction", "system": "Emissions (EGR)", "causes": ["Faulty EGR valve solenoid", "Damaged wiring/connector"], "service": ["Test EGR solenoid circuit", "Repair wiring or replace valve"], "parts": ["EGR valve"] },
+    { "code": "P0405", "title": "EGR Sensor A Circuit Low", "system": "Emissions (EGR)", "causes": ["Short to ground in EGR position sensor wiring", "Faulty sensor"], "service": ["Inspect wiring for shorts", "Replace EGR position sensor"], "parts": ["EGR position sensor"] },
+    { "code": "P0406", "title": "EGR Sensor A Circuit High", "system": "Emissions (EGR)", "causes": ["Short to voltage in EGR position sensor wiring", "Faulty sensor"], "service": ["Inspect wiring for shorts", "Replace EGR position sensor if faulty"], "parts": ["EGR position sensor"] },
+    { "code": "P0410", "title": "Secondary Air Injection System Malfunction", "system": "Emissions (Secondary Air)", "causes": ["Faulty secondary air pump", "Stuck air injection valve", "Damaged hoses"], "service": ["Test air pump operation", "Inspect hoses and valve", "Replace faulty components"], "parts": ["Secondary air injection pump", "Air injection valve"] },
+    { "code": "P0411", "title": "Secondary Air Injection System Incorrect Flow Detected", "system": "Emissions (Secondary Air)", "causes": ["Leaking or disconnected hose", "Failing air pump", "Stuck check valve"], "service": ["Inspect hoses for leaks/disconnection", "Test air pump and check valve"], "parts": ["Secondary air injection pump", "Check valve", "Hoses"] },
+    { "code": "P0421", "title": "Warm Up Catalyst Efficiency Below Threshold (Bank 1)", "system": "Emissions (Catalytic Converter)", "causes": ["Aging or failing catalytic converter", "Exhaust leak", "Faulty O2 sensor(s)"], "service": ["Inspect exhaust for leaks", "Test O2 sensors", "Replace catalytic converter if confirmed failed"], "parts": ["Catalytic converter", "Oxygen sensors"] },
+    { "code": "P0431", "title": "Warm Up Catalyst Efficiency Below Threshold (Bank 2)", "system": "Emissions (Catalytic Converter)", "causes": ["Aging or failing catalytic converter (bank 2)", "Exhaust leak", "Faulty O2 sensor(s)"], "service": ["Inspect exhaust system", "Test O2 sensors", "Replace catalytic converter"], "parts": ["Catalytic converter", "Oxygen sensors"] },
+    { "code": "P0441", "title": "EVAP System Incorrect Purge Flow", "system": "Emissions (EVAP)", "causes": ["Faulty purge valve", "Blocked or leaking purge line", "Clogged charcoal canister"], "service": ["Test purge valve operation", "Inspect purge lines", "Replace canister/valve if needed"], "parts": ["Purge valve", "EVAP canister"] },
+    { "code": "P0443", "title": "EVAP Purge Control Valve Circuit Malfunction", "system": "Emissions (EVAP)", "causes": ["Faulty purge control valve", "Damaged wiring/connector"], "service": ["Test purge valve circuit", "Replace purge valve"], "parts": ["Purge valve"] },
+    { "code": "P0449", "title": "EVAP Vent Valve/Solenoid Circuit Malfunction", "system": "Emissions (EVAP)", "causes": ["Faulty vent valve/solenoid", "Damaged wiring/connector"], "service": ["Test vent valve circuit", "Replace vent valve/solenoid"], "parts": ["EVAP vent control valve"] },
+    { "code": "P0451", "title": "EVAP Pressure Sensor Range/Performance", "system": "Emissions (EVAP)", "causes": ["Faulty EVAP pressure sensor", "Blocked sense line"], "service": ["Inspect sense line", "Replace EVAP pressure sensor"], "parts": ["EVAP pressure sensor"] },
+    { "code": "P0452", "title": "EVAP Pressure Sensor Low Input", "system": "Emissions (EVAP)", "causes": ["Short to ground in sensor wiring", "Faulty EVAP pressure sensor"], "service": ["Inspect wiring for shorts", "Replace sensor"], "parts": ["EVAP pressure sensor"] },
+    { "code": "P0453", "title": "EVAP Pressure Sensor High Input", "system": "Emissions (EVAP)", "causes": ["Short to voltage in sensor wiring", "Faulty EVAP pressure sensor"], "service": ["Inspect wiring for shorts", "Replace sensor if faulty"], "parts": ["EVAP pressure sensor"] },
+    { "code": "P0501", "title": "Vehicle Speed Sensor Range/Performance", "system": "Transmission/Speed Sensing", "causes": ["Faulty vehicle speed sensor", "Damaged tone ring", "Wiring fault"], "service": ["Test speed sensor signal", "Inspect tone ring", "Replace sensor"], "parts": ["Vehicle speed sensor"] },
+    { "code": "P0502", "title": "Vehicle Speed Sensor Low Input", "system": "Transmission/Speed Sensing", "causes": ["Short to ground in wiring", "Faulty vehicle speed sensor"], "service": ["Inspect wiring for shorts", "Replace sensor"], "parts": ["Vehicle speed sensor"] },
+    { "code": "P0503", "title": "Vehicle Speed Sensor Intermittent/Erratic/High", "system": "Transmission/Speed Sensing", "causes": ["Loose/corroded connector", "Damaged tone ring", "Intermittent wiring fault"], "service": ["Inspect connector and tone ring", "Replace sensor if fault persists"], "parts": ["Vehicle speed sensor"] },
+    { "code": "P0520", "title": "Engine Oil Pressure Sensor/Switch Circuit Malfunction", "system": "Engine Lubrication", "causes": ["Faulty oil pressure sensor/switch", "Damaged wiring/connector", "Low oil level"], "service": ["Check oil level", "Test oil pressure sensor", "Replace sensor if faulty"], "parts": ["Oil pressure sensor/switch", "Engine oil"] },
+    { "code": "P0521", "title": "Engine Oil Pressure Sensor/Switch Range/Performance", "system": "Engine Lubrication", "causes": ["Faulty oil pressure sensor", "Actual low/high oil pressure condition"], "service": ["Verify actual oil pressure with gauge", "Replace sensor if reading is inaccurate"], "parts": ["Oil pressure sensor/switch"] },
+    { "code": "P0522", "title": "Engine Oil Pressure Sensor/Switch Low Voltage", "system": "Engine Lubrication", "causes": ["Short to ground in wiring", "Faulty sensor", "Low oil pressure"], "service": ["Check oil level/pressure", "Inspect wiring", "Replace sensor"], "parts": ["Oil pressure sensor/switch"] },
+    { "code": "P0523", "title": "Engine Oil Pressure Sensor/Switch High Voltage", "system": "Engine Lubrication", "causes": ["Short to voltage in wiring", "Faulty sensor"], "service": ["Inspect wiring for shorts", "Replace sensor if faulty"], "parts": ["Oil pressure sensor/switch"] },
+    { "code": "P0530", "title": "A/C Refrigerant Pressure Sensor Circuit Malfunction", "system": "HVAC", "causes": ["Faulty A/C pressure sensor", "Low refrigerant charge", "Damaged wiring/connector"], "service": ["Check refrigerant charge", "Test pressure sensor", "Replace sensor if faulty"], "parts": ["A/C refrigerant pressure sensor"] },
+    { "code": "P0551", "title": "Power Steering Pressure Sensor Circuit Malfunction", "system": "Power Steering", "causes": ["Faulty power steering pressure sensor", "Damaged wiring/connector", "Low power steering fluid"], "service": ["Check power steering fluid level", "Test pressure sensor", "Replace sensor if faulty"], "parts": ["Power steering pressure sensor", "Power steering fluid"] },
+    { "code": "P0562", "title": "System Voltage Low", "system": "Charging System", "causes": ["Weak or failing battery", "Failing alternator", "Loose/corroded battery cables"], "service": ["Test battery and charging voltage", "Inspect battery cables/terminals", "Replace battery or alternator as needed"], "parts": ["Battery", "Alternator"] },
+    { "code": "P0563", "title": "System Voltage High", "system": "Charging System", "causes": ["Faulty voltage regulator", "Failing alternator", "Bad battery cell"], "service": ["Test charging system voltage", "Replace alternator/regulator if overcharging"], "parts": ["Alternator", "Battery"] },
+    { "code": "P0602", "title": "Control Module Programming Error", "system": "Control Module", "causes": ["Incomplete or corrupted ECM/PCM programming", "Failed reflash"], "service": ["Reflash/reprogram ECM with correct calibration"], "parts": ["Engine control module (ECM/PCM)"] },
+    { "code": "P0603", "title": "Internal Control Module Keep Alive Memory (KAM) Error", "system": "Control Module", "causes": ["Loss of battery power to ECM", "Corrupted KAM memory", "Failing control module"], "service": ["Check for battery/power interruptions", "Reset/reprogram ECM", "Replace module if persistent"], "parts": ["Engine control module (ECM/PCM)"] },
+    { "code": "P0604", "title": "Internal Control Module RAM Error", "system": "Control Module", "causes": ["Corrupted ECM memory", "Failing control module"], "service": ["Reflash/reprogram ECM", "Replace control module if needed"], "parts": ["Engine control module (ECM/PCM)"] },
+    { "code": "P0605", "title": "Internal Control Module ROM Error", "system": "Control Module", "causes": ["Corrupted ECM firmware", "Failing control module"], "service": ["Reflash/reprogram ECM", "Replace control module if needed"], "parts": ["Engine control module (ECM/PCM)"] },
+    { "code": "P0706", "title": "Transmission Range Sensor Circuit Range/Performance", "system": "Transmission", "causes": ["Misadjusted or worn range sensor", "Wiring fault"], "service": ["Test/adjust range sensor", "Replace if faulty"], "parts": ["Transmission range sensor (PNP switch)"] },
+    { "code": "P0710", "title": "Transmission Fluid Temperature Sensor Circuit Malfunction", "system": "Transmission", "causes": ["Faulty fluid temperature sensor", "Damaged wiring/connector", "Low/dirty fluid"], "service": ["Check fluid level/condition", "Test sensor", "Replace sensor if faulty"], "parts": ["Transmission fluid temperature sensor", "Transmission fluid"] },
+    { "code": "P0711", "title": "Transmission Fluid Temperature Sensor Range/Performance", "system": "Transmission", "causes": ["Contaminated/degraded fluid", "Failing temperature sensor"], "service": ["Service transmission fluid", "Replace sensor if reading inaccurate"], "parts": ["Transmission fluid temperature sensor", "Transmission fluid"] },
+    { "code": "P0716", "title": "Input/Turbine Speed Sensor Circuit Range/Performance", "system": "Transmission", "causes": ["Faulty input speed sensor", "Damaged tone ring", "Low/dirty transmission fluid"], "service": ["Test sensor signal", "Service fluid", "Replace sensor"], "parts": ["Input/turbine speed sensor", "Transmission fluid"] },
+    { "code": "P0717", "title": "Input/Turbine Speed Sensor Circuit No Signal", "system": "Transmission", "causes": ["Open circuit in sensor wiring", "Failed input speed sensor"], "service": ["Inspect wiring for open circuit", "Replace sensor"], "parts": ["Input/turbine speed sensor"] },
+    { "code": "P0721", "title": "Output Speed Sensor Circuit Range/Performance", "system": "Transmission", "causes": ["Faulty output speed sensor", "Damaged tone ring", "Wiring fault"], "service": ["Test sensor signal", "Replace sensor"], "parts": ["Output speed sensor"] },
+    { "code": "P0731", "title": "Gear 1 Incorrect Ratio", "system": "Transmission", "causes": ["Worn clutch pack/band for gear 1", "Low fluid", "Solenoid failure"], "service": ["Check fluid level/condition", "Diagnose internal transmission wear", "Test shift solenoids"], "parts": ["Transmission fluid", "Shift solenoids"] },
+    { "code": "P0732", "title": "Gear 2 Incorrect Ratio", "system": "Transmission", "causes": ["Worn clutch pack/band for gear 2", "Low fluid", "Solenoid failure"], "service": ["Check fluid level/condition", "Diagnose internal transmission wear", "Test shift solenoids"], "parts": ["Transmission fluid", "Shift solenoids"] },
+    { "code": "P0733", "title": "Gear 3 Incorrect Ratio", "system": "Transmission", "causes": ["Worn clutch pack/band for gear 3", "Low fluid", "Solenoid failure"], "service": ["Check fluid level/condition", "Diagnose internal transmission wear", "Test shift solenoids"], "parts": ["Transmission fluid", "Shift solenoids"] },
+    { "code": "P0734", "title": "Gear 4 Incorrect Ratio", "system": "Transmission", "causes": ["Worn clutch pack/band for gear 4", "Low fluid", "Solenoid failure"], "service": ["Check fluid level/condition", "Diagnose internal transmission wear", "Test shift solenoids"], "parts": ["Transmission fluid", "Shift solenoids"] },
+    { "code": "P0735", "title": "Gear 5 Incorrect Ratio", "system": "Transmission", "causes": ["Worn clutch pack/band for gear 5", "Low fluid", "Solenoid failure"], "service": ["Check fluid level/condition", "Diagnose internal transmission wear", "Test shift solenoids"], "parts": ["Transmission fluid", "Shift solenoids"] },
+    { "code": "P0741", "title": "Torque Converter Clutch Circuit Performance or Stuck Off", "system": "Transmission", "causes": ["Faulty TCC solenoid", "Low/contaminated transmission fluid", "Worn torque converter"], "service": ["Test TCC solenoid", "Service fluid", "Inspect torque converter"], "parts": ["Torque converter clutch solenoid", "Transmission fluid"] },
+    { "code": "P0742", "title": "Torque Converter Clutch Circuit Stuck On", "system": "Transmission", "causes": ["Stuck TCC solenoid", "Wiring short"], "service": ["Test/replace TCC solenoid", "Inspect wiring"], "parts": ["Torque converter clutch solenoid"] },
+    { "code": "P0750", "title": "Shift Solenoid A Malfunction", "system": "Transmission", "causes": ["Faulty shift solenoid A", "Low/dirty transmission fluid", "Wiring fault"], "service": ["Test shift solenoid", "Service fluid", "Replace solenoid if faulty"], "parts": ["Shift solenoid A", "Transmission fluid"] },
+    { "code": "P0755", "title": "Shift Solenoid B Malfunction", "system": "Transmission", "causes": ["Faulty shift solenoid B", "Low/dirty transmission fluid", "Wiring fault"], "service": ["Test shift solenoid", "Service fluid", "Replace solenoid if faulty"], "parts": ["Shift solenoid B", "Transmission fluid"] },
+    { "code": "P0760", "title": "Shift Solenoid C Malfunction", "system": "Transmission", "causes": ["Faulty shift solenoid C", "Low/dirty transmission fluid", "Wiring fault"], "service": ["Test shift solenoid", "Service fluid", "Replace solenoid if faulty"], "parts": ["Shift solenoid C", "Transmission fluid"] },
+    { "code": "P0765", "title": "Shift Solenoid D Malfunction", "system": "Transmission", "causes": ["Faulty shift solenoid D", "Low/dirty transmission fluid", "Wiring fault"], "service": ["Test shift solenoid", "Service fluid", "Replace solenoid if faulty"], "parts": ["Shift solenoid D", "Transmission fluid"] }
 ];
 
 // Advance Auto Parts category pages, confirmed directly from their own
@@ -108,6 +223,94 @@ function partShopUrl(partName, vehicle) {
   const searchText = [...vehicleBits, clean].join(' ').trim();
   return `https://shop.advanceautoparts.com/web/SearchResults?searchTerm=${encodeURIComponent(searchText)}`;
 }
+
+// --- US-market vehicle data for the Make/Model dropdowns. Covers the
+// major automakers sold in the US during the OBD-II era (1996+), including
+// a handful of discontinued brands since plenty of check-engine lookups
+// are for older/used vehicles. Not every trim/generation is listed — this
+// is meant to prevent typos in the dropdown, not serve as a fitment guide;
+// the actual DTC lookup below is generic and code-based either way.
+const VEHICLE_DATA = {
+  "Acura": ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TL", "TLX", "TSX", "ZDX"],
+  "Alfa Romeo": ["4C", "Giulia", "Giulietta", "Stelvio"],
+  "Audi": ["A3", "A4", "A5", "A6", "A7", "A8", "e-tron", "Q3", "Q5", "Q7", "Q8", "R8", "TT"],
+  "BMW": ["2 Series", "3 Series", "4 Series", "5 Series", "7 Series", "i3", "i4", "iX", "X1", "X3", "X5", "X7", "Z4"],
+  "Buick": ["Enclave", "Encore", "Envision", "LaCrosse", "Lucerne", "Regal", "Rendezvous", "Verano"],
+  "Cadillac": ["ATS", "CT4", "CT5", "CT6", "CTS", "DTS", "Escalade", "SRX", "STS", "XT4", "XT5", "XT6", "XTS"],
+  "Chevrolet": ["Astro", "Avalanche", "Aveo", "Blazer", "Bolt", "Camaro", "Cavalier", "Cobalt", "Colorado", "Corvette", "Cruze", "Equinox", "Express", "HHR", "Impala", "Malibu", "Monte Carlo", "S-10", "Silverado", "Sonic", "Spark", "Suburban", "Tahoe", "Trailblazer", "Traverse", "Trax", "Volt"],
+  "Chrysler": ["200", "300", "Aspen", "Concorde", "Crossfire", "Pacifica", "PT Cruiser", "Sebring", "Town & Country", "Voyager"],
+  "Dodge": ["Avenger", "Caliber", "Caravan", "Challenger", "Charger", "Dakota", "Durango", "Grand Caravan", "Journey", "Magnum", "Neon", "Nitro", "Stratus", "Viper"],
+  "Fiat": ["500", "500L", "500X"],
+  "Ford": ["Bronco", "C-Max", "Edge", "Escape", "Escort", "Expedition", "Explorer", "F-150", "F-250", "F-350", "Fiesta", "Five Hundred", "Flex", "Focus", "Fusion", "Mustang", "Ranger", "Taurus", "Transit", "Windstar"],
+  "Genesis": ["G70", "G80", "G90", "GV70", "GV80"],
+  "GMC": ["Acadia", "Canyon", "Envoy", "Jimmy", "Savana", "Sierra", "Terrain", "Yukon"],
+  "Honda": ["Accord", "Civic", "CR-V", "CR-Z", "Element", "Fit", "HR-V", "Insight", "Odyssey", "Passport", "Pilot", "Prelude", "Ridgeline", "S2000"],
+  "Hummer": ["H1", "H2", "H3"],
+  "Hyundai": ["Accent", "Azera", "Elantra", "Ioniq", "Kona", "Palisade", "Santa Fe", "Sonata", "Tucson", "Veloster", "Venue"],
+  "Infiniti": ["EX35", "FX35", "G35", "G37", "JX35", "M35", "Q50", "Q60", "QX50", "QX60", "QX80"],
+  "Jaguar": ["F-Pace", "F-Type", "S-Type", "X-Type", "XE", "XF", "XJ", "XK"],
+  "Jeep": ["Cherokee", "Commander", "Compass", "Gladiator", "Grand Cherokee", "Liberty", "Patriot", "Renegade", "Wrangler"],
+  "Kia": ["Forte", "Optima", "Rio", "Sedona", "Sorento", "Soul", "Sportage", "Stinger", "Telluride"],
+  "Land Rover": ["Defender", "Discovery", "Discovery Sport", "Range Rover", "Range Rover Evoque", "Range Rover Sport", "Range Rover Velar"],
+  "Lexus": ["CT200h", "ES", "GS", "GX", "IS", "LC", "LS", "LX", "NX", "RC", "RX", "UX"],
+  "Lincoln": ["Aviator", "Continental", "Corsair", "MKC", "MKS", "MKT", "MKX", "MKZ", "Nautilus", "Navigator", "Town Car"],
+  "Mazda": ["3", "5", "6", "CX-3", "CX-30", "CX-5", "CX-9", "MX-5 Miata", "RX-8", "Tribute"],
+  "Mercedes-Benz": ["A-Class", "C-Class", "CLA", "CLS", "E-Class", "G-Class", "GLA", "GLC", "GLE", "GLS", "S-Class", "SL", "SLK"],
+  "Mercury": ["Grand Marquis", "Milan", "Montego", "Mountaineer", "Sable"],
+  "Mini": ["Clubman", "Convertible", "Countryman", "Hardtop", "Paceman"],
+  "Mitsubishi": ["Eclipse", "Endeavor", "Galant", "Lancer", "Mirage", "Outlander"],
+  "Nissan": ["350Z", "370Z", "Altima", "Armada", "Frontier", "Juke", "Kicks", "Maxima", "Murano", "Pathfinder", "Rogue", "Sentra", "Titan", "Versa", "Xterra"],
+  "Oldsmobile": ["Alero", "Aurora", "Bravada", "Intrigue"],
+  "Plymouth": ["Breeze", "Neon", "Voyager"],
+  "Pontiac": ["Aztek", "Bonneville", "G6", "G8", "Grand Am", "Grand Prix", "Solstice", "Sunfire", "Torrent", "Vibe"],
+  "Polestar": ["Polestar 1", "Polestar 2", "Polestar 3"],
+  "Porsche": ["911", "718 Boxster", "718 Cayman", "Cayenne", "Macan", "Panamera", "Taycan"],
+  "Ram": ["1500", "2500", "3500", "ProMaster"],
+  "Saab": ["9-3", "9-5", "9-7X"],
+  "Saturn": ["Aura", "Ion", "Outlook", "Sky", "Vue"],
+  "Scion": ["FR-S", "iQ", "tC", "xA", "xB", "xD"],
+  "Subaru": ["Ascent", "BRZ", "Crosstrek", "Forester", "Impreza", "Legacy", "Outback", "WRX"],
+  "Suzuki": ["Forenza", "Grand Vitara", "SX4", "Verona", "XL7"],
+  "Tesla": ["Cybertruck", "Model 3", "Model S", "Model X", "Model Y"],
+  "Toyota": ["4Runner", "Avalon", "Camry", "Corolla", "Highlander", "Land Cruiser", "Matrix", "Prius", "RAV4", "Sequoia", "Sienna", "Solara", "Tacoma", "Tundra", "Venza", "Yaris"],
+  "Volkswagen": ["Atlas", "Beetle", "CC", "Golf", "GTI", "ID.4", "Jetta", "Passat", "Tiguan", "Touareg"],
+  "Volvo": ["C30", "S60", "S80", "S90", "V60", "V90", "XC40", "XC60", "XC90"]
+};
+
+const makeSelect = document.getElementById('make');
+const modelSelect = document.getElementById('model');
+const yearSelect = document.getElementById('year');
+
+Object.keys(VEHICLE_DATA).sort().forEach(make => {
+  const opt = document.createElement('option');
+  opt.value = make;
+  opt.textContent = make;
+  makeSelect.appendChild(opt);
+});
+
+(function populateYears() {
+  const currentYear = new Date().getFullYear();
+  const topYear = currentYear + 1; // next model year is usually already on sale
+  for (let y = topYear; y >= 1996; y--) {
+    const opt = document.createElement('option');
+    opt.value = String(y);
+    opt.textContent = String(y);
+    yearSelect.appendChild(opt);
+  }
+})();
+
+makeSelect.addEventListener('change', () => {
+  const models = VEHICLE_DATA[makeSelect.value] || [];
+  modelSelect.innerHTML = '';
+  if (!models.length) {
+    modelSelect.disabled = true;
+    modelSelect.appendChild(new Option('Select make first…', ''));
+    return;
+  }
+  modelSelect.disabled = false;
+  modelSelect.appendChild(new Option('Select model…', ''));
+  models.forEach(model => modelSelect.appendChild(new Option(model, model)));
+});
 
 // --- EmailJS configuration (for "Send me details in Email") ---
 // To turn this on:

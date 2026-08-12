@@ -769,3 +769,17 @@ function diyTestsHtml(entry) {
     <ol class="diy-tests">${entry.diyTests.map(t => `<li>${escapeHtml(t)}</li>`).join('')}</ol>
   `;
 }
+
+// --- Visitor counter. Uses CountAPI (countapi.mileshilliard.com), a free,
+// no-signup counting service — every page load increments one shared number
+// stored on their server, then we display it. "checkengine_anup_site_visits"
+// is the unique key for this counter; don't reuse it elsewhere or the counts
+// will mix together. ---
+(function () {
+  const visitCountEl = document.getElementById('visit-count');
+  if (!visitCountEl) return;
+  fetch('https://countapi.mileshilliard.com/api/v1/hit/checkengine_anup_site_visits')
+    .then(res => res.json())
+    .then(data => { visitCountEl.textContent = Number(data.value).toLocaleString(); })
+    .catch(() => { visitCountEl.textContent = '—'; });
+})();
